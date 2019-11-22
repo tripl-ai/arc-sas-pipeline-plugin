@@ -1,0 +1,96 @@
+[
+  {
+    "id": "",
+    "name": "SURVYEAR",
+    "type": "string",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ]
+  },
+  {
+    "id": "",
+    "name": "LEAID",
+    "type": "string",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ]
+  },
+  {
+    "id": "",
+    "name": "NAME",
+    "type": "string",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ]
+  },
+  {
+    "id": "",
+    "name": "PHONE",
+    "type": "string",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ]
+  },
+  {
+    "id": "",
+    "name": "LATCOD",
+    "type": "decimal",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ],
+    "precision": 9,
+    "scale": 6
+  },
+  {
+    "id": "",
+    "name": "LONCOD",
+    "type": "decimal",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ],
+    "precision": 11,
+    "scale": 6
+  },
+  {
+    "id": "",
+    "name": "PKTCH",
+    "type": "decimal",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ],
+    "precision": 8,
+    "scale": 2
+  },
+  {
+    "id": "",
+    "name": "AMPKM",
+    "type": "long",
+    "trim": true,
+    "nullable": true,
+    "nullableValues": [
+      "",
+      "null"
+    ]
+  }
+]
