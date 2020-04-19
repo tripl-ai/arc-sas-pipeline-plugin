@@ -8,10 +8,9 @@ object Dependencies {
   // testing
   val scalaTest = "org.scalatest" %% "scalatest" % "3.0.7" % "test,it"
   val hadoopCommon =  "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "it"
-  val hadoopAWS = "org.apache.hadoop" % "hadoop-aws" % hadoopVersion % "it"
 
   // arc
-  val arc = "ai.tripl" %% "arc" % "2.8.0" % "provided"
+  val arc = "ai.tripl" %% "arc" % "2.10.0" % "provided"
   val typesafeConfig = "com.typesafe" % "config" % "1.3.1" intransitive()  
 
   // spark
@@ -24,7 +23,6 @@ object Dependencies {
   val etlDeps = Seq(
     scalaTest,
     hadoopCommon,
-    hadoopAWS,
     
     arc,
     typesafeConfig,
