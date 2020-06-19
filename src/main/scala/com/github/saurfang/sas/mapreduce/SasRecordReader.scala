@@ -88,7 +88,7 @@ class SasRecordReader(split: InputSplit,
   }
 
   // Log file information
-  log.info(s"Reading file of length $fileLength between $splitStart and $splitEnd. ($rowCount rows, $columnCount columns)")
+  log.debug(s"Reading file of length $fileLength between $splitStart and $splitEnd. ($rowCount rows, $columnCount columns)")
 
   // Expand splitStart to closest preceding page end.
   if (splitStart > 0) {
@@ -100,7 +100,7 @@ class SasRecordReader(split: InputSplit,
     splitStart -= partialPageLength
 
     if (partialPageLength != 0) {
-      log.info(s"Expanded splitStart by $partialPageLength bytes to start on page boundary, splitStart is now: $splitStart.")
+      log.debug(s"Expanded splitStart by $partialPageLength bytes to start on page boundary, splitStart is now: $splitStart.")
     }
   }
 
@@ -114,7 +114,7 @@ class SasRecordReader(split: InputSplit,
     splitEnd -= partialPageLength
 
     if (partialPageLength != 0) {
-      log.info(s"Shrunk splitEnd by $partialPageLength bytes to end on page boundary, splitEnd is now: $splitEnd.")
+      log.debug(s"Shrunk splitEnd by $partialPageLength bytes to end on page boundary, splitEnd is now: $splitEnd.")
     }
   }
 
@@ -125,7 +125,7 @@ class SasRecordReader(split: InputSplit,
 
     // Shift fileInputStream to start of split.
     fileInputStream.seek(splitStart)
-    log.info(s"Shifted fileInputStream to $splitStart offset from $originalPos.")
+    log.debug(s"Shifted fileInputStream to $splitStart offset from $originalPos.")
 
     // Reset Byte Counter.
     countingInputStream.resetByteCount()
@@ -148,7 +148,7 @@ class SasRecordReader(split: InputSplit,
   }
 
   override def close() {
-    log.info(s"Read $getPos bytes and $recordCount records.")
+    log.debug(s"Read $getPos bytes and $recordCount records.")
     if (countingInputStream != null) {
       countingInputStream.close()
     }
