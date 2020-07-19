@@ -17,9 +17,22 @@ import ai.tripl.arc.util.Utils
 
 import com.github.saurfang.sas.spark._
 
-class SASExtract extends PipelineStagePlugin {
+class SASExtract extends PipelineStagePlugin with JupyterCompleter {
 
   val version = ai.tripl.arc.sas.BuildInfo.version
+
+  val snippet = """{
+    |  "type": "SASExtract",
+    |  "name": "SASExtract",
+    |  "environments": [
+    |    "production",
+    |    "test"
+    |  ],
+    |  "inputURI": "hdfs://*.sas7bdat",
+    |  "outputView": "outputView"
+    |}""".stripMargin
+
+  val documentationURI = new java.net.URI(s"${baseURI}/extract/#sasextract")
 
   def instantiate(index: Int, config: com.typesafe.config.Config)(implicit spark: SparkSession, logger: ai.tripl.arc.util.log.logger.Logger, arcContext: ARCContext): Either[List[ai.tripl.arc.config.Error.StageError], PipelineStage] = {
     import ai.tripl.arc.config.ConfigReader._
@@ -89,7 +102,7 @@ case class SASExtractStage(
   persist: Boolean,
   numPartitions: Option[Int],
   partitionBy: List[String]
-) extends PipelineStage {
+) extends ExtractPipelineStage {
 
   override def execute()(implicit spark: SparkSession, logger: ai.tripl.arc.util.log.logger.Logger, arcContext: ARCContext): Option[DataFrame] = {
     SASExtractStage.execute(this)
@@ -102,9 +115,9 @@ object SASExtractStage {
 
     if (arcContext.isStreaming) {
       throw new Exception("SASExtractStage does not support streaming mode.") with DetailException {
-        override val detail = stage.stageDetail          
+        override val detail = stage.stageDetail
       }
-    }   
+    }
 
     // try to get the schema
     val optionSchema = try {
