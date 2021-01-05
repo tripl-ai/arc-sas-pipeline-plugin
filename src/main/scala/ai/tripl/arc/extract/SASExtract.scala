@@ -21,16 +21,15 @@ class SASExtract extends PipelineStagePlugin with JupyterCompleter {
 
   val version = ai.tripl.arc.sas.BuildInfo.version
 
-  val snippet = """{
+  def snippet()(implicit arcContext: ARCContext): String = {
+    s"""{
     |  "type": "SASExtract",
     |  "name": "SASExtract",
-    |  "environments": [
-    |    "production",
-    |    "test"
-    |  ],
+    |  "environments": [${arcContext.completionEnvironments.map { env => s""""${env}""""}.mkString(", ")}],
     |  "inputURI": "hdfs://*.sas7bdat",
     |  "outputView": "outputView"
     |}""".stripMargin
+  }
 
   val documentationURI = new java.net.URI(s"${baseURI}/extract/#sasextract")
 
