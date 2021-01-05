@@ -10,7 +10,7 @@ object Dependencies {
   val hadoopCommon =  "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "it"
 
   // arc
-  val arc = "ai.tripl" %% "arc" % "3.4.0" % "provided"
+  val arc = "ai.tripl" %% "arc" % "3.7.0" % "provided"
 
   // spark
   val sparkSql = "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
