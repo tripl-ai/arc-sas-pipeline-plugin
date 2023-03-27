@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.8.0
+
+- update to Arc 3.13.2
+
 ## 1.7.0
 
 - update to Arc 3.7.0
